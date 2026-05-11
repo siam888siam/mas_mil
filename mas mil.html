@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mas Mil Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 25px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .result {
+            margin-top: 25px;
+            background: #eee;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Mas Mil Calculator</h1>
+
+    <h2>Mil Khata</h2>
+
+    <input type="number" id="siam" placeholder="Siam tk amount">
+    <input type="number" id="maruf" placeholder="Maruf tk amount">
+    <input type="number" id="rohim" placeholder="Rohim tk amount">
+    <input type="number" id="wahid" placeholder="Wahid tk amount">
+    <input type="number" id="jisan" placeholder="Jisan tk amount">
+
+    <h2>Mil Count</h2>
+
+    <input type="number" id="siam1" placeholder="Siam mil amount">
+    <input type="number" id="maruf1" placeholder="Maruf mil amount">
+    <input type="number" id="rohim1" placeholder="Rohim mil amount">
+    <input type="number" id="wahid1" placeholder="Wahid mil amount">
+    <input type="number" id="jisan1" placeholder="Jisan mil amount">
+
+    <h2>Bazer</h2>
+
+    <input type="number" id="bazer" placeholder="Bazer tk amount">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+function calculate() {
+
+    let siam = parseFloat(document.getElementById("siam").value) || 0;
+    let maruf = parseFloat(document.getElementById("maruf").value) || 0;
+    let rohim = parseFloat(document.getElementById("rohim").value) || 0;
+    let wahid = parseFloat(document.getElementById("wahid").value) || 0;
+    let jisan = parseFloat(document.getElementById("jisan").value) || 0;
+
+    let siam1 = parseFloat(document.getElementById("siam1").value) || 0;
+    let maruf1 = parseFloat(document.getElementById("maruf1").value) || 0;
+    let rohim1 = parseFloat(document.getElementById("rohim1").value) || 0;
+    let wahid1 = parseFloat(document.getElementById("wahid1").value) || 0;
+    let jisan1 = parseFloat(document.getElementById("jisan1").value) || 0;
+
+    let bazer = parseFloat(document.getElementById("bazer").value) || 0;
+
+    let totalTk = siam + maruf + rohim + wahid + jisan;
+
+    let totalMil = siam1 + maruf1 + rohim1 + wahid1 + jisan1;
+
+    let milRate = bazer / totalMil;
+
+    let siamCost = siam1 * milRate;
+    let marufCost = maruf1 * milRate;
+    let rohimCost = rohim1 * milRate;
+    let wahidCost = wahid1 * milRate;
+    let jisanCost = jisan1 * milRate;
+
+    let resultHTML = `
+        <h2>Result</h2>
+
+        <p><strong>Total Tk:</strong> ${totalTk}</p>
+        <p><strong>Remaining Tk:</strong> ${totalTk - bazer}</p>
+        <p><strong>Total Mil:</strong> ${totalMil}</p>
+        <p><strong>Mil Rate:</strong> ${milRate.toFixed(2)}</p>
+
+        <hr>
+
+        <p>Siam Cost: ${siamCost.toFixed(2)}</p>
+        <p>Maruf Cost: ${marufCost.toFixed(2)}</p>
+        <p>Rohim Cost: ${rohimCost.toFixed(2)}</p>
+        <p>Wahid Cost: ${wahidCost.toFixed(2)}</p>
+        <p>Jisan Cost: ${jisanCost.toFixed(2)}</p>
+
+        <hr>
+
+        <p>Siam Remaining: ${(siam - siamCost).toFixed(2)}</p>
+        <p>Maruf Remaining: ${(maruf - marufCost).toFixed(2)}</p>
+        <p>Rohim Remaining: ${(rohim - rohimCost).toFixed(2)}</p>
+        <p>Wahid Remaining: ${(wahid - wahidCost).toFixed(2)}</p>
+        <p>Jisan Remaining: ${(jisan - jisanCost).toFixed(2)}</p>
+    `;
+
+    document.getElementById("result").innerHTML = resultHTML;
+}
+
+</script>
+
+</body>
+</html>
