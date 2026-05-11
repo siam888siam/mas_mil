@@ -86,9 +86,9 @@
     <input type="number" id="wahid1" placeholder="Wahid mil amount">
     <input type="number" id="jisan1" placeholder="Jisan mil amount">
 
-    <h2>Bazer</h2>
+    <h2>Bazar</h2>
 
-    <input type="number" id="bazer" placeholder="Bazer tk amount">
+    <input type="number" id="bazar" placeholder="Bazar tk amount">
 
     <button onclick="calculate()">Calculate</button>
 
@@ -118,7 +118,7 @@ function calculate() {
 
     let totalMil = siam1 + maruf1 + rohim1 + wahid1 + jisan1;
 
-    let milRate = bazer / totalMil;
+    let milRate = bazar / totalMil;
 
     let siamCost = siam1 * milRate;
     let marufCost = maruf1 * milRate;
@@ -130,7 +130,7 @@ function calculate() {
         <h2>Result</h2>
 
         <p><strong>Total Tk:</strong> ${totalTk}</p>
-        <p><strong>Remaining Tk:</strong> ${totalTk - bazer}</p>
+        <p><strong>Remaining Tk:</strong> ${totalTk - bazar}</p>
         <p><strong>Total Mil:</strong> ${totalMil}</p>
         <p><strong>Mil Rate:</strong> ${milRate.toFixed(2)}</p>
 
